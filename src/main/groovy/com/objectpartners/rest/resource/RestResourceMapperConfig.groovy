@@ -22,16 +22,16 @@ class RestResourceMapperConfig {
         return new ResourceProcessor<Resource<?>>() {
             @Override
             public Resource<?> process(Resource<?> resource) {
-                // additional processing only for entity's with have rest resources
-                if (resource.getContent().class.isAnnotationPresent(EntityWithRestResource.class)) {
+                // additional processing only for entities that have rest resources
+                if (resource.content.class.isAnnotationPresent(EntityWithRestResource.class)) {
                     Map<String, String> links = [:]
 
                     // process any fields that have the RestResourceMapper annotation
-                    resource.getContent().class.getDeclaredFields().each { Field field ->
+                    resource.content.class.declaredFields.each { Field field ->
                         RestResourceMapper restResourceMapper = field.getAnnotation(RestResourceMapper.class)
 
                         if (restResourceMapper) {
-                            String resourceId = resource.content."${field.getName()}"
+                            String resourceId = resource.content."${field.name}"
 
                             if (resourceId) {
                                 // construct a REST endpoint URL from the annotation properties and resource id

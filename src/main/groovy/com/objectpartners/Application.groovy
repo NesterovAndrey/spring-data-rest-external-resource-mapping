@@ -5,6 +5,11 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.ConfigurableApplicationContext
 
+/**
+ * @author sconnelly
+ * created 2/12/2016
+ *
+ */
 @SpringBootApplication
 class Application {
     static void main(String[] args) {
